@@ -13,7 +13,7 @@ type Inputs struct {
 	Title       string `validate:"required" query:"title"`
 	Description string `query:"description"`
 	Image       string `query:"image"`
-	Stars       string `query:"stars"`
+	Stars       int    `query:"stars"`
 }
 
 func (i *Inputs) Validate() error {
