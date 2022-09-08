@@ -5,6 +5,7 @@ on:
   workflow_call:
   push:
     paths:
+    - ".site/*"
     - "readingList.csv"
     - "generator.go"
 
