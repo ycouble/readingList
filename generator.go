@@ -131,7 +131,8 @@ func makeListHTML(groups []*entryGroup) g.Node {
 				article.Title,
 				article.Description,
 				article.Date.Format(dateFormat),
-				article.HackerNewsURL),
+				article.HackerNewsURL,
+				article.Stars),
 			)
 
 		}
@@ -142,8 +143,9 @@ func makeListHTML(groups []*entryGroup) g.Node {
 	return Div(parts...)
 }
 
-func articleLinkComponent(url, title, description, date, hnURL string) g.Node {
+func articleLinkComponent(url, title, description, date, hnURL, stars string) g.Node {
 	return Li(
+		g.Text("["+stars+" ⭐️]"),
 		A(g.Attr("href", url), g.Text(title)),
 		g.Text(" - "+date),
 		g.If(hnURL != "", g.Group([]g.Node{
@@ -182,7 +184,7 @@ func GenerateSite() error {
 	numArticles := len(entries)
 	groupedEntries := groupEntriesByMonth(entries)
 
-	const pageTitle = "Yoann' read list"
+	const pageTitle = "Yoann's read list"
 
 	head := Div(
 		H1(g.Text(pageTitle)),
