@@ -2,7 +2,7 @@
   const params = new URLSearchParams(window.location.search);
   const token = params.get("token");
   const payload = {
-    event_type: "on-demand-test",
+    event_type: "rl-append",
     client_payload: {
       title: params.get("title"),
       url: params.get("url"),
