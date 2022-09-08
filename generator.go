@@ -182,7 +182,7 @@ func GenerateSite() error {
 	numArticles := len(entries)
 	groupedEntries := groupEntriesByMonth(entries)
 
-	const pageTitle = "akp's reading list"
+	const pageTitle = "James's read list"
 
 	head := Div(
 		H1(g.Text(pageTitle)),
