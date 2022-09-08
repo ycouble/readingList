@@ -145,7 +145,8 @@ func makeListHTML(groups []*entryGroup) g.Node {
 
 func articleLinkComponent(url, title, description, date, hnURL, stars string) g.Node {
 	return Li(
-		g.Text("["+stars+" ⭐️]"),
+		g.If(stars == "0", g.Text("👎 - ")),
+		g.If(stars != "0", g.Text(stars+" ⭐️ - ")),
 		A(g.Attr("href", url), g.Text(title)),
 		g.Text(" - "+date),
 		g.If(hnURL != "", g.Group([]g.Node{
